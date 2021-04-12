@@ -363,6 +363,9 @@ namespace ArCliLibrary {
 		property String^ Response { String^ get() { return response; }}
 		property EnumLocalInvitationState State { EnumLocalInvitationState get() { return state; }}
 
+		ClrLocalCallInvation(String^ strCalleeId) : calleeId(strCalleeId) {
+
+		}
 		ClrLocalCallInvation(ILocalCallInvitation* lci) :
 			calleeId(gcnew String(lci->getCalleeId())),
 			response(gcnew String(lci->getResponse())),
@@ -405,6 +408,9 @@ namespace ArCliLibrary {
 			EnumRemoteInvitationState get() { return static_cast<EnumRemoteInvitationState>(raw->getState()); }
 		}
 
+		ClrRemoteCallInvitation() {
+
+		}
 		ClrRemoteCallInvitation(IRemoteCallInvitation* rci) : raw(rci)
 		{
 		}

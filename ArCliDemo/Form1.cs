@@ -24,6 +24,11 @@ namespace ArCliDemo
             artcRTM.onLoginSuccess = onLoginSuccess;
             artcRTM.onLoginFailure = onLoginFailure;
             artcRTM.onMessageReceivedFromPeer = onMessageReceivedFromPeer;
+            artcRTM.getRtmCallManager().onLocalInvitationReceivedByPeer = onLocalInvitationReceivedByPeer;
+            artcRTM.getRtmCallManager().onRemoteInvitationReceived = onRemoteInvitationReceived;
+
+
+
         }
 
       
@@ -51,6 +56,16 @@ namespace ArCliDemo
         {
             log("join channel success in " + channel + " by " + uid, elapsed);
             m_start = true;
+        }
+
+        private void onLocalInvitationReceivedByPeer(ClrLocalCallInvation localInv)
+        {
+
+        }
+
+        private void onRemoteInvitationReceived(ClrRemoteCallInvitation remoteCall)
+        {
+
         }
 
         delegate void LogDelegate(String operation, int result);
@@ -105,13 +120,23 @@ namespace ArCliDemo
         {
             log("initialize", artcRTM.initialize(txtVendorkey.Text));
             log("join channel", artcRTM.login(txtToken.Text, txtUserId.Text));
+
+            
         }
 
         private void button1_Click_1(object sender, EventArgs e)
         {
             //log(" convert -1 to unit result is " + Convert.ToUInt32(-1), 0);
             //log("start audio recording", artc.startAudioRecording("recording.mp4", AudioRecordingQualityType.AUDIO_RECORDING_QUALITY_HIGH));
-            artcRTM.logout();
+            
+
+            ClrLocalCallInvation localInv = new ClrLocalCallInvation("16317587");
+            localInv.ChannelId = "";
+            localInv.Content = "Hello";
+
+            artcRTM.getRtmCallManager().sendLocalInvitation(localInv);
+
+            //artcRTM.logout();
         }
     }
 }
