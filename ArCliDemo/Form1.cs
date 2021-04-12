@@ -23,6 +23,7 @@ namespace ArCliDemo
             InitializeComponent();
             artcRTM.onLoginSuccess = onLoginSuccess;
             artcRTM.onLoginFailure = onLoginFailure;
+            artcRTM.onMessageReceivedFromPeer = onMessageReceivedFromPeer;
         }
 
       
@@ -34,6 +35,11 @@ namespace ArCliDemo
         private void onLoginFailure(EnumLoginErrCode code)
         {
             log("Join rtm failed", 0);
+        }
+
+        private void onMessageReceivedFromPeer(String peerId, ClrMessage msg)
+        {
+
         }
 
         private void onCameraReady()
