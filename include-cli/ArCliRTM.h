@@ -33,6 +33,8 @@ namespace ArCliLibrary {
 		AT<EnumLogoutErrCode>::Type^ onLogout;
 		AT<EnumConnectionState, EnumConnectionChangeReason>::Type^ onConnectionStateChanged;
 
+		int setParameters(String ^param);
+
 		//点对点消息
 		ClrMessage^ createMessage();
 		int sendMessageToPeer(String^ peerId, String^ msg);
