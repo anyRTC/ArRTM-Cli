@@ -5,7 +5,6 @@
 //  Copyright (c) 2019 AR.io. All rights reserved.
 //
 #pragma once
-
 #include "IArRtmService.h"
 
 namespace ar {
@@ -470,7 +469,7 @@ namespace ar {
        - 0: Success.
        - <0: Failure. See #INVITATION_API_CALL_ERR_CODE for the error code.
        */
-      virtual int cancelLocalInvitation(ILocalCallInvitation *invitation) = 0;
+      virtual int cancelLocalInvitation(ILocalCallInvitation *invitation,const char*reason) = 0;
         
        /**
         Creates an ILocalCallInvitation object.
